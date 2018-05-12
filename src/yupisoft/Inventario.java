@@ -687,39 +687,34 @@ public class Inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_TcantActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
-       
-        try{
-   
-          PreparedStatement s=cn.prepareStatement("INSERT INTO lote(fecha,idLote,idProducto,precioCompra,cantidad) VALUES(?,?,?,?,?)")  ;
-          
+
+        try {
+
+            PreparedStatement s = cn.prepareStatement("INSERT INTO lote(fecha,idLote,idProducto,precioCompra,cantidad) VALUES(?,?,?,?,?)");
+
 // GUARDAR LOS DATOS INGRESADOS, SE REGISTRAN LOS DATOS EN LA BASE DE DATOS EN LA TABLA LOTE
-          s.setString(1,fecha());
-          s.setString(2, lb_IdLote.getText());
-          s.setString(3,TId_Prod.getText());
-          s.setString(4,TPrecioC.getText());
-          s.setString(5,Tcant.getText());
-          s.executeUpdate();
-         //   mostrarInventario("");
-            
-          JOptionPane.showMessageDialog(this, "Informacion Almacenada");
-          numeros();// LLAMAR AL METODO PARA GENERAR EL CONSECUTIVO DE LOTE
-            
-          //LIMPIAR LOS CAMPOS
-          TId_Prod.setText("");
-          
+            s.setString(1, fecha());
+            s.setString(2, lb_IdLote.getText());
+            s.setString(3, TId_Prod.getText());
+            s.setString(4, TPrecioC.getText());
+            s.setString(5, Tcant.getText());
+            s.executeUpdate();
+            //   mostrarInventario("");
+
+            JOptionPane.showMessageDialog(this, "Informacion Almacenada");
+            numeros();// LLAMAR AL METODO PARA GENERAR EL CONSECUTIVO DE LOTE
+
+            //LIMPIAR LOS CAMPOS
+            TId_Prod.setText("");
+
             TPrecioC.setText("");
             Tcant.setText("");
-          
 
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
-         }
-   
-        
-        
-        
+        }
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed

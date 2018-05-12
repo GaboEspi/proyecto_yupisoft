@@ -43,7 +43,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        TCodigo = new javax.swing.JTextField();
+        TCedula = new javax.swing.JTextField();
         TNombre = new javax.swing.JTextField();
         TTelefono = new javax.swing.JTextField();
         TDireccion = new javax.swing.JTextField();
@@ -119,7 +119,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
                             .addComponent(TNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TZona, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(21, 21, 21))
         );
         jPanel1Layout.setVerticalGroup(
@@ -130,7 +130,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(TCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -172,11 +172,11 @@ public class NuevoVendedor extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
 
-            PreparedStatement s = cn.prepareStatement("INSERT INTO empleado(idEmpleado,nombreEmpleado,telEmpleado,dirEmpleado,zonaEmpleado) VALUES(?,?,?,?,?)");
+            PreparedStatement s = cn.prepareStatement("INSERT INTO vendedor(idVendedor,nombreVendedor,telefono,direccion,codigoZona) VALUES(?,?,?,?,?)");
 
 // GUARDAR LOS DATOS INGRESADOS, SE REGISTRAN LOS DATOS EN LA BASE DE DATOS EN LA TABLA LOTE
-            s.setString(1, TCodigo.getText());
-            s.setString(2, TCodigo.getText());
+            s.setString(1, TCedula.getText());
+            s.setString(2, TNombre.getText());
             s.setString(3, TTelefono.getText());
             s.setString(4, TDireccion.getText());
             s.setString(5, TZona.getText());
@@ -184,8 +184,8 @@ public class NuevoVendedor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Informacion Almacenada");
 
             //LIMPIAR LOS CAMPOS
-            TCodigo.setText("");
-            TCodigo.setText("");
+            TCedula.setText("");
+            TNombre.setText("");
             TTelefono.setText("");
             TDireccion.setText("");
             TZona.setText("");
@@ -238,7 +238,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BAgregar;
     private javax.swing.JButton BCancelar;
-    private javax.swing.JTextField TCodigo;
+    private javax.swing.JTextField TCedula;
     private javax.swing.JTextField TDireccion;
     private javax.swing.JTextField TNombre;
     private javax.swing.JTextField TTelefono;
