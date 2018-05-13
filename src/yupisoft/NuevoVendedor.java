@@ -13,6 +13,8 @@ import clases.Conectar;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static yupisoft.Inventario.fecha;
 
 /**
@@ -26,6 +28,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
      */
     public NuevoVendedor() {
         initComponents();
+        Label_cedulaExiste.setVisible(false);
     }
 
     /**
@@ -50,7 +53,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
         TZona = new javax.swing.JTextField();
         BAgregar = new javax.swing.JButton();
         BCancelar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        Label_cedulaExiste = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +70,12 @@ public class NuevoVendedor extends javax.swing.JFrame {
 
         jLabel5.setText("Zona");
 
+        TCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TCedulaKeyPressed(evt);
+            }
+        });
+
         BAgregar.setBackground(new java.awt.Color(0, 0, 255));
         BAgregar.setText("Agregar");
         BAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -82,8 +91,8 @@ public class NuevoVendedor extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel6.setText("La cédula ya existe");
+        Label_cedulaExiste.setForeground(new java.awt.Color(255, 0, 0));
+        Label_cedulaExiste.setText("La cédula ya existe");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,7 +100,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
+                .addComponent(Label_cedulaExiste)
                 .addGap(50, 50, 50))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -126,7 +135,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jLabel6)
+                .addComponent(Label_cedulaExiste)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -170,6 +179,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
 
     private void BAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAgregarActionPerformed
         // TODO add your handling code here:
+        
         try {
 
             PreparedStatement s = cn.prepareStatement("INSERT INTO vendedor(idVendedor,nombreVendedor,telefono,direccion,codigoZona) VALUES(?,?,?,?,?)");
@@ -199,6 +209,42 @@ public class NuevoVendedor extends javax.swing.JFrame {
         System.exit(0);
                 // TODO add your handling code here:
     }//GEN-LAST:event_BCancelarActionPerformed
+
+    private void TCedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCedulaKeyPressed
+        
+        //String sql = ;
+        //TZona.setText(sql);
+        //Conectar cc= new Conectar();
+        //Connection cn= cc.conexion();
+        ResultSet rs;
+        try {
+            Statement stm = cn.createStatement();
+            rs = stm.executeQuery("SELECT nombreVendedor FROM vendedor WHERE idVendedor = '%" + TCedula.getText() + "%'");
+            if (rs.last()) {
+                //Existe
+                Label_cedulaExiste.setVisible(true);
+                TNombre.setText("encontrado");
+            } else {
+                //No Existe
+                Label_cedulaExiste.setVisible(false);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NuevoVendedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+        
+        
+        /*
+        String sql_cedula = null;
+        //sql_cedula = "SELECT *FROM vendedor WHERE idVendedor LIKE '%" + TCedula.getText() + "%'";
+        sql_cedula = "SELECT idVendedor FROM vendedor WHERE idVendedor = '%" + TCedula.getText() + "%'";
+        if  (sql_cedula.isEmpty()) {
+            Label_cedulaExiste.setVisible(false);
+        } else {
+            Label_cedulaExiste.setVisible(true);
+        }*/
+    }//GEN-LAST:event_TCedulaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -238,6 +284,7 @@ public class NuevoVendedor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BAgregar;
     private javax.swing.JButton BCancelar;
+    private javax.swing.JLabel Label_cedulaExiste;
     private javax.swing.JTextField TCedula;
     private javax.swing.JTextField TDireccion;
     private javax.swing.JTextField TNombre;
@@ -248,10 +295,12 @@ public class NuevoVendedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
 Conectar cc= new Conectar();
 Connection cn= cc.conexion();
+
+
 
 }

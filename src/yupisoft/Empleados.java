@@ -1,4 +1,3 @@
-
 package yupisoft;
 
 import clases.Conectar;
@@ -20,7 +19,6 @@ public class Empleados extends javax.swing.JFrame {
         initComponents();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -383,47 +381,41 @@ public class Empleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-          this.setVisible(false);
-            Inicio I = new Inicio();
-            I.setVisible(true);
-           I.setLocationRelativeTo(null);
+
+        this.setVisible(false);
+        Inicio I = new Inicio();
+        I.setVisible(true);
+        I.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BAgregar_nuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAgregar_nuevoEmpleadoActionPerformed
-       
-        try{
-   
-          PreparedStatement s=cn.prepareStatement("INSERT INTO vendedor(idVendedor,nombreVendedor,direccion,telefono,codigoZona) VALUES(?,?,?,?,?)")  ;
-          
+
+        try {
+
+            PreparedStatement s = cn.prepareStatement("INSERT INTO vendedor(idVendedor,nombreVendedor,direccion,telefono,codigoZona) VALUES(?,?,?,?,?)");
+
 // GUARDAR LOS DATOS INGRESADOS, SE REGISTRAN LOS DATOS EN LA BASE DE DATOS EN LA TABLA LOTE
-          s.setString(1,Tex_Idvendedor.getText());
-          s.setString(2, Tex_NomVendedor.getText());
-          s.setString(3,Tex_DirVendedor.getText());
-          s.setString(4,Tex_telVendedor.getText());
-          s.setString(5,Tex_Zona.getText());
-          s.executeUpdate();
-     
-          JOptionPane.showMessageDialog(this, "Informacion Almacenada");
-                      
-          //LIMPIAR LOS CAMPOS
-          Tex_Idvendedor.setText("");
-          Tex_NomVendedor.setText("");
-          Tex_DirVendedor.setText("");
-          Tex_telVendedor.setText("");
-          Tex_Zona.setText("");
-          
+            s.setString(1, Tex_Idvendedor.getText());
+            s.setString(2, Tex_NomVendedor.getText());
+            s.setString(3, Tex_DirVendedor.getText());
+            s.setString(4, Tex_telVendedor.getText());
+            s.setString(5, Tex_Zona.getText());
+            s.executeUpdate();
 
-        }
-        catch(SQLException e){
+            JOptionPane.showMessageDialog(this, "Informacion Almacenada");
+
+            //LIMPIAR LOS CAMPOS
+            Tex_Idvendedor.setText("");
+            Tex_NomVendedor.setText("");
+            Tex_DirVendedor.setText("");
+            Tex_telVendedor.setText("");
+            Tex_Zona.setText("");
+
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
-         }
-   
-                                        
+        }
 
-        
-        
-        
+
     }//GEN-LAST:event_BAgregar_nuevoEmpleadoActionPerformed
 
     private void Tex_ZonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tex_ZonaActionPerformed
@@ -431,32 +423,30 @@ public class Empleados extends javax.swing.JFrame {
     }//GEN-LAST:event_Tex_ZonaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-     
-        try{
-   
-          PreparedStatement s=cn.prepareStatement("INSERT INTO zona(codigoZona,nombreZona,porcentaje) VALUES(?,?,?)")  ;
-          
-// GUARDAR LOS DATOS INGRESADOS, SE REGISTRAN LOS DATOS EN LA BASE DE DATOS EN LA TABLA LOTE
-          s.setString(1,Tex_CodZona.getText());
-          s.setString(2, Tex_Zona.getText());
-          s.setString(3,Tex_porcentaje.getText());
-          
-          s.executeUpdate();
-     
-          JOptionPane.showMessageDialog(this, "Informacion Almacenada");
-                      
-          //LIMPIAR LOS CAMPOS
-          Tex_CodZona.setText("");
-          Tex_NomZona.setText("");
-          Tex_porcentaje.setText("");
-          
 
-        }
-        catch(SQLException e){
+        try {
+
+            PreparedStatement s = cn.prepareStatement("INSERT INTO zona(codigoZona,nombreZona,porcentaje) VALUES(?,?,?)");
+
+// GUARDAR LOS DATOS INGRESADOS, SE REGISTRAN LOS DATOS EN LA BASE DE DATOS EN LA TABLA LOTE
+            s.setString(1, Tex_CodZona.getText());
+            s.setString(2, Tex_Zona.getText());
+            s.setString(3, Tex_porcentaje.getText());
+
+            s.executeUpdate();
+
+            JOptionPane.showMessageDialog(this, "Informacion Almacenada");
+
+            //LIMPIAR LOS CAMPOS
+            Tex_CodZona.setText("");
+            Tex_NomZona.setText("");
+            Tex_porcentaje.setText("");
+
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
-         }
-  
-        
+        }
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -535,6 +525,6 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 
-Conectar cc= new Conectar();
-    Connection cn= cc.conexion();
+    Conectar cc = new Conectar();
+    Connection cn = cc.conexion();
 }
