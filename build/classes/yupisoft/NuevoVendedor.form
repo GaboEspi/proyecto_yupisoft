@@ -56,7 +56,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="BCancelar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="46" max="32767" attributes="0"/>
                           <Component id="BAgregar" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -77,12 +77,12 @@
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="TTelefono" min="-2" pref="131" max="-2" attributes="0"/>
-                              <Component id="TNombre" min="-2" pref="131" max="-2" attributes="0"/>
-                              <Component id="TDireccion" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
-                              <Component id="TZona" min="-2" pref="131" max="-2" attributes="0"/>
-                              <Component id="TCedula" min="-2" pref="131" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="TTelefono" pref="131" max="32767" attributes="0"/>
+                              <Component id="TNombre" pref="131" max="32767" attributes="0"/>
+                              <Component id="TDireccion" alignment="0" pref="131" max="32767" attributes="0"/>
+                              <Component id="TCedula" pref="131" max="32767" attributes="0"/>
+                              <Component id="CZona" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -118,7 +118,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TZona" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="CZona" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -167,8 +167,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="TDireccion">
         </Component>
-        <Component class="javax.swing.JTextField" name="TZona">
-        </Component>
         <Component class="javax.swing.JButton" name="BAgregar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -193,8 +191,26 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="La c&#xe9;dula ya existe"/>
+            <Property name="text" type="java.lang.String" value="Cedula Existe"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="CZona">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CZonaActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
